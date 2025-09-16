@@ -20,7 +20,7 @@ const HomePage = () => {
     if (submittedQuery) {
       const fetchMovieData = async () => {
         setNotFound(false);
-        const API_KEY = "a5132573";
+        const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
         const url = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${submittedQuery}`;
         try {
           const response = await fetch(url);
