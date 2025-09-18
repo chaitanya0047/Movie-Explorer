@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
+import Box from "@mui/material/Box";
 import MovieCard from "./MovieCard.jsx";
 
 const ResultsPagination = ({
@@ -9,6 +10,10 @@ const ResultsPagination = ({
   itemsPerPage = 4,
 }) => {
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    setPage(1);
+  }, [moviesList, submittedQuery]);
 
   const handleChangePage = (event, value) => {
     setPage(value);
@@ -21,13 +26,37 @@ const ResultsPagination = ({
   return (
     <>
       <MovieCard movies={visibleMovies} />
+
       {moviesList.length > 0 && (
-        <Pagination
-          count={Math.ceil(moviesList.length / itemsPerPage)}
-          page={page}
-          onChange={handleChangePage}
-          size="large"
-        />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            my: 4,
+          }}
+        >
+          <Pagination
+            count={Math.ceil(moviesList.length / itemsPerPage)}
+            page={page}
+            onChange={handleChangePage}
+            size="large"
+            sx={{
+              "& .MuiPaginationItem-root": {
+                color: "var(--color-text)",
+              },
+              // THE FIX: Added !important to guarantee the override on refresh
+              "& .Mui-selected": {
+                backgroundColor: "var(--color-primary) !important",
+                color:"black"
+              },
+              "& .MuiPaginationItem-root:hover": {
+                backgroundColor: "var(--color-primary)",
+                color:"black"
+              },
+              
+            }}
+          />
+        </Box>
       )}
     </>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import "./input.css" 
 
 const Input = (props) => {
   const handleInputChange = (event) => {
@@ -14,7 +15,8 @@ const Input = (props) => {
         onChange={handleInputChange}
       />
       <button className="search-button" onClick={props.onSearchClick}>
-        Search
+        <img src="./src/assets/icons/SearchIcon.svg" alt="" className="search-icon" />
+        <p>Search</p>
       </button>
     </div>
   );

@@ -1,10 +1,12 @@
 import React from 'react';
+import './NotFound.css'
+import { Color } from 'ogl';
 
 const NotFound = () => {
   return (
-    <div style={{ textAlign: 'center', color: 'red', marginTop: '50px' }}>
-      <h1>Movie Not Found</h1>
-      <p>Sorry, we couldn't find any movies matching your search. Please try again.</p>
+    <div className='not-found'>
+      <h1 className='not-found-message'><span style={{ color: 'var(--color-primary)' }}>404</span> No Data Found !</h1>
+      <img src="./src/assets/Images/NotFound.png" alt="" className="notFoundImage" />
     </div>
   );
 };

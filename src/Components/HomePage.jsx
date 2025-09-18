@@ -3,6 +3,7 @@ import Input from "./Input.jsx";
 import Tribute from "./Tribute.jsx";
 import NotFound from "./NotFound.jsx";
 import ResultsPagination from "./AppPagination.jsx";
+import "./HomePage.css"
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,8 +21,8 @@ const HomePage = () => {
     if (submittedQuery) {
       const fetchMovieData = async () => {
         setNotFound(false);
-        const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
-        const url = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${submittedQuery}`;
+        // const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+        const url = `http://www.omdbapi.com/?apikey=a5132573&s=${submittedQuery}`;
         try {
           const response = await fetch(url);
           const data = await response.json();
@@ -61,7 +62,7 @@ const HomePage = () => {
   };
 
   return (
-    <>
+    <main>
       <section className="hero-section">
         <img
           src="./src/assets/Images/BrandLogo.png"
@@ -73,16 +74,15 @@ const HomePage = () => {
           <h2 className="hero-title">PREMIUM</h2>
         </div>
         <div className="divider"></div>
-
-        <Input
+      </section>
+      <Input
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           onSearchClick={handleSearch}
         />
-      </section>
 
       {renderContent()}
-    </>
+    </main>
   );
 };
 
