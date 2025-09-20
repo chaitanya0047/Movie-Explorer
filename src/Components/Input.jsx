@@ -1,7 +1,7 @@
-import React from "react";
-import "./input.css" 
+import "./input.css";
 
 const Input = (props) => {
+  const { searchQuery, onSearchClick } = props;
   const handleInputChange = (event) => {
     props.setSearchQuery(event.target.value);
   };
@@ -11,11 +11,15 @@ const Input = (props) => {
         type="text"
         placeholder="Search Movie..."
         className="search-input"
-        value={props.searchQuery}
+        value={searchQuery}
         onChange={handleInputChange}
       />
-      <button className="search-button" onClick={props.onSearchClick}>
-        <img src="./src/assets/icons/SearchIcon.svg" alt="" className="search-icon" />
+      <button className="search-button" onClick={onSearchClick}>
+        <img
+          src="./src/assets/icons/SearchIcon.svg"
+          alt=""
+          className="search-icon"
+        />
         <p>Search</p>
       </button>
     </div>

@@ -7,15 +7,19 @@ import Krishna from "../../assets/Images/Krishna.jpg";
 import AnjalaDevi from "../../assets/Images/AnjalaDevi.jpg";
 import Jamuna from "../../assets/Images/Jamuna.jpg";
 import KrishnamRaju from "../../assets/Images/KrishnamRaju.jpg";
+import Sridevi from "../../assets/Images/Sridevi.jpg"
 
-export const actors = [
+const actors = [
   { image: SrNtr, text: "N. T. Rama Rao (NTR)" },
   { image: NageswaraRao, text: "Akkineni Nageswara Rao (ANR)" },
   { image: Savitri, text: "Savitri" },
-  { image: SvRangarao, text: "S. V. Ranga Rao" },
-  { image: SobhanBabu, text: "Sobhan Babu" },
   { image: Krishna, text: "Krishna" },
-  { image: AnjalaDevi, text: "Anjali Devi" },
   { image: Jamuna, text: "Jamuna" },
-  { image: KrishnamRaju, text: "Krishnam Raju" }
+  { image: SvRangarao, text: "S. V. Ranga Rao" },
+  { image: AnjalaDevi, text: "Anjali Devi" },
+  { image: KrishnamRaju, text: "Krishnam Raju" },
+  { image: Sridevi, text: "Sridevi" },
+  { image: SobhanBabu, text: "Sobhan Babu" },
 ];
+
+export default actors;

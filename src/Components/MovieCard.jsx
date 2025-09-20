@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MovieCard.css";
+import ImageNotFound from "../assets/Images/ImageNotFound.png";
 
 const MovieCard = ({ movies }) => {
   return (
@@ -21,7 +22,7 @@ const MovieCardItem = ({ movie }) => {
       {showFallback ? (
         <div className="fallback-card">
           <img
-            src="./src/assets/Images/ImageNotFound.png"
+            src={ImageNotFound}
             alt="Not Found"
             className="poster-not-found"
           />
@@ -36,8 +37,12 @@ const MovieCardItem = ({ movie }) => {
         />
       )}
 
-      <p className="movie-title">{movie.Title}</p>
-      <span className="year-badge">{movie.Year}</span>
+      <div className="movie-details">
+        <p className="movie-title">
+          {movie.Title.split(" ").slice(0, 5).join(" ")}
+        </p>
+        <span className="year-badge">{movie.Year?.slice(0, 4)}</span>
+      </div>
     </div>
   );
 };

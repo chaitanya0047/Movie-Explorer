@@ -10,7 +10,7 @@ import {
 import { useEffect, useRef } from "react";
 
 import "./CircularGallery.css";
-import { actors } from "./Utils/Actors";
+import actors from "./Utils/Actors";
 
 function debounce(func, wait) {
   let timeout;
@@ -36,7 +36,7 @@ function autoBind(instance) {
 function createTextTexture(
   gl,
   text,
-  font = "bold 30px Poppins",
+  font = "bold 30px monospace",
   color = "black"
 ) {
   const canvas = document.createElement("canvas");
@@ -44,8 +44,7 @@ function createTextTexture(
   context.font = font;
   const metrics = context.measureText(text);
   const textWidth = Math.ceil(metrics.width);
-  const sizePx = parseInt((font.match(/(\d+)px/) || [])[1] || "30", 10);
-  const textHeight = Math.ceil(sizePx * 1.2);
+  const textHeight = Math.ceil(parseInt(font, 10) * 1.2);
   canvas.width = textWidth + 20;
   canvas.height = textHeight + 20;
   context.font = font;
@@ -66,7 +65,7 @@ class Title {
     renderer,
     text,
     textColor = "#545050",
-    font = "30px Poppins",
+    font = "30px sans-serif",
   }) {
     autoBind(this);
     this.gl = gl;
@@ -112,9 +111,7 @@ class Title {
     });
     this.mesh = new Mesh(this.gl, { geometry, program });
     const aspect = width / height;
-   const basePx = 30;
-const sizePx = parseInt((this.font.match(/(\d+)px/) || [])[1] || String(basePx), 10);
-    const textHeight = this.plane.scale.y * 0.15 * (sizePx / basePx);
+    const textHeight = this.plane.scale.y * 0.15;
     const textWidth = textHeight * aspect;
     this.mesh.scale.set(textWidth, textHeight, 1);
     this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
@@ -250,7 +247,7 @@ class Media {
       renderer: this.renderer,
       text: this.text,
       textColor: this.textColor,
-      font: this.font,
+      fontFamily: this.font,
     });
   }
   update(scroll, direction) {

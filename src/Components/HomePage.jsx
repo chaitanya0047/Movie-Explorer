@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Input from "./Input.jsx";
 import Tribute from "./Tribute.jsx";
 import NotFound from "./NotFound.jsx";
 import ResultsPagination from "./AppPagination.jsx";
-import "./HomePage.css"
+import "./HomePage.css";
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,11 +22,11 @@ const HomePage = () => {
     if (submittedQuery) {
       const fetchMovieData = async () => {
         setNotFound(false);
-        // const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
-        const url = `http://www.omdbapi.com/?apikey=a5132573&s=${submittedQuery}`;
+        const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+        const url = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${submittedQuery}`;
         try {
-          const response = await fetch(url);
-          const data = await response.json();
+          const response = await axios.get(url);
+          const data = response.data;
 
           if (data.Response === "True" && data.Search) {
             setMoviesList(data.Search);
@@ -76,10 +77,10 @@ const HomePage = () => {
         <div className="divider"></div>
       </section>
       <Input
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          onSearchClick={handleSearch}
-        />
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSearchClick={handleSearch}
+      />
 
       {renderContent()}
     </main>

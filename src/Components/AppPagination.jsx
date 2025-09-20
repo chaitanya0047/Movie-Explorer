@@ -44,16 +44,15 @@ const ResultsPagination = ({
               "& .MuiPaginationItem-root": {
                 color: "var(--color-text)",
               },
-              // THE FIX: Added !important to guarantee the override on refresh
+
               "& .Mui-selected": {
                 backgroundColor: "var(--color-primary) !important",
-                color:"black"
+                color: "black",
               },
               "& .MuiPaginationItem-root:hover": {
                 backgroundColor: "var(--color-primary)",
-                color:"black"
+                color: "black",
               },
-              
             }}
           />
         </Box>
